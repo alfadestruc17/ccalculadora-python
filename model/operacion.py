@@ -3,23 +3,41 @@ from model.database_conexion import DatabaseConnection  # Clase de conexión a l
 
 
 class Operacion:
+    #Operaciones
+    @staticmethod
+    def suma(numero1, numero2):
+        return numero1 + numero2
+
+    @staticmethod
+    def resta(numero1, numero2):
+        return numero1 - numero2
+
+    @staticmethod
+    def multiplicacion(numero1, numero2):
+        return numero1 * numero2
+
+    @staticmethod
+    def division(numero1, numero2):
+        if numero2 == 0:
+            raise ZeroDivisionError("\033[31mEl divisor no puede ser cero.\033[0m")
+        return numero1 / numero2
+
     @staticmethod
     def realizar_operacion(numero1, numero2, tipo_operacion):
         if tipo_operacion == "suma":
-            return numero1 + numero2
+            return Operacion.suma(numero1, numero2)
         elif tipo_operacion == "resta":
-            return numero1 - numero2
+            return Operacion.resta(numero1, numero2)
         elif tipo_operacion == "multiplicacion":
-            return numero1 * numero2
+            return Operacion.multiplicacion(numero1, numero2)
         elif tipo_operacion == "division":
-            if numero2 == 0:
-                raise ZeroDivisionError("El divisor no puede ser cero.")
-            return numero1 / numero2
+            return Operacion.division(numero1, numero2)
         else:
-            raise ValueError("Operación no válida.")  # Tipo de operación no reconocido
+            raise ValueError("\033[31mOperación no válida.\033[0m")  # Tipo de operación no reconocido
 
     @staticmethod
     def guardar_historial(tipo_operacion, numero1, numero2, resultado):
+        
         db = DatabaseConnection()  # Crea una conexión a la base de datos
         try:
             # Crea un cursor para ejecutar la consulta
@@ -59,3 +77,4 @@ class Operacion:
         finally:
             # Cierra la conexión a la base de datos
             db.Close_conection()
+
