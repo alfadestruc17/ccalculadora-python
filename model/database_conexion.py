@@ -43,9 +43,9 @@ class DatabaseConnection:
             CREATE TABLE IF NOT EXISTS historial (
                 id INT AUTO_INCREMENT PRIMARY KEY,  # Identificador único para cada registro
                 operacion VARCHAR(45) NOT NULL,     # Tipo de operación (ej: suma, resta)
-                numero1 DECIMAL(10, 2) NOT NULL,    # Primer número
-                numero2 DECIMAL(10, 2) NOT NULL,    # Segundo número
-                resultado DECIMAL(10, 2) NOT NULL   # Resultado de la operación
+                numero1 FLOAT NOT NULL,    # Primer número
+                numero2 FLOAT NOT NULL,    # Segundo número
+                resultado FLOAT NOT NULL   # Resultado de la operación
             );
         """)
 
