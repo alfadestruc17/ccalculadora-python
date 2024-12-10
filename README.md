@@ -19,3 +19,10 @@ En la cual tambien es gestionada con una base de datos para el manejo de histori
    ```bash
    pip install mysql-connector-python
    ```
+## Estructura de la Base de Datos
+
+El sistema crea automáticamente las siguientes tablas:
+
+- **Operaciones**: Almacena información sobre los nombres de las operaciones.
+- **Historial**: Almacena las operaciones realizadas, los numeros usados, la operacion usada y el resultado.
+
