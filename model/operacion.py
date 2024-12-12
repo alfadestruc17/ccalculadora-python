@@ -5,18 +5,19 @@ from model.database_conexion import DatabaseConnection  # Clase de conexión a l
 class Operacion:
     @staticmethod
     def realizar_operacion(numero1, numero2, tipo_operacion):
-        if tipo_operacion == "suma":
-            return numero1 + numero2
-        elif tipo_operacion == "resta":
-            return numero1 - numero2
-        elif tipo_operacion == "multiplicacion":
-            return numero1 * numero2
-        elif tipo_operacion == "division":
-            if numero2 == 0:
-                raise ZeroDivisionError("El divisor no puede ser cero.")
-            return numero1 / numero2
-        else:
-            raise ValueError("Operación no válida.")  # Tipo de operación no reconocido
+        match tipo_operacion:
+            case "suma":
+                return numero1 + numero2
+            case "resta":
+                return numero1 - numero2
+            case "multiplicacion":
+                return numero1 * numero2
+            case "division":
+                if numero2 == 0:
+                    raise ZeroDivisionError("El divisor no puede ser cero.")
+                return numero1 / numero2
+            case _:
+                raise ValueError("Operación no válida.")  # Tipo de operación no reconocido
 
     @staticmethod
     def guardar_historial(tipo_operacion, numero1, numero2, resultado):
