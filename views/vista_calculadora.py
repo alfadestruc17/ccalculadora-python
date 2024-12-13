@@ -36,8 +36,8 @@ class Vista:
             # Muestra los registros del historial con un formato legible
             print("--- Historial de Operaciones ---")
             for registro in historial:
-                print(f"ID: {registro[0]} | Operación: {registro[1]} | "
-                      f"Números: {registro[2]}, {registro[3]} | Resultado: {registro[3]}")
+                print(f"ID: {registro[0]} | Operación: {registro[2]} | "
+                      f"Números: {registro[1]}, {registro[3]} | Resultado: {registro[4]}")
 
     def mostrar_error(self, mensaje):
         print(f"\033[31mError: {mensaje}\033[0m") # Muestra si ocurrio un error en alguna acción

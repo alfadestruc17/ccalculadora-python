@@ -44,16 +44,10 @@ class Controlador:
                         Operacion.guardar_historial(4, numero1, numero2, resultado)
 
                 case "5":  # Ver historial
-                    self.ver_historial()
+                    historial = Operacion.obtener_historial()
+                    self.vista.mostrar_historial(historial)
                 case "6":  # Salir
                     print("Gracias por usar la calculadora. ¡Hasta luego!")
                     break
                 case _:
                     print("Opción no válida. Intente nuevamente.")  # Manejo de entrada no válida
-
-    def ver_historial(self):
-        # Obtiene el historial desde el modelo
-        historial = Operacion.obtener_historial()
-
-        # Muestra el historial utilizando la vista
-        self.vista.mostrar_historial(historial)

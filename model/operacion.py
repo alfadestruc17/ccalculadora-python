@@ -53,7 +53,7 @@ class Operacion:
             cursor = db.conn.cursor()
 
             # Consulta SQL para obtener los datos de la tabla 'historial'
-            consulta = "SELECT h.numero1, o.operacion, h.numero2, h.resultado FROM historial h INNER JOIN operaciones o ON o.id = h.id_operacion"
+            consulta = "SELECT h.id, h.numero1, o.operacion, h.numero2, h.resultado FROM historial h INNER JOIN operaciones o ON o.id = h.id_operacion"
             cursor.execute(consulta)  # Ejecuta la consulta
             historial = cursor.fetchall()  # Recupera todos los registros
             return historial  # Retorna el historial como una lista de tuplas
