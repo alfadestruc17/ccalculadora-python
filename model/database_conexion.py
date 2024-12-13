@@ -67,7 +67,7 @@ class DatabaseConnection:
         """
         if self.conn.is_connected():  # Verifica si la conexión sigue activa
             self.conn.close()  # Cierra la conexión
-            print("Conexión cerrada.")  # Mensaje para confirmar el cierre
+            
 
 
 # Bloque principal para probar el código
