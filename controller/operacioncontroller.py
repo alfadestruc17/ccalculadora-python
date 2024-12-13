@@ -15,15 +15,17 @@ class Controlador:
             opcion = input("Seleccione una opción: ")
 
             # Manejo de opciones del menú
-            if opcion in ["1", "2", "3", "4"]:  # Opciones de operaciones
-                self.realizar_operacion(opcion)
-            elif opcion == "5":  # Ver historial
-                self.ver_historial()
-            elif opcion == "6":  # Salir
-                print("Gracias por usar la calculadora. ¡Hasta luego!")
-                break
-            else:
-                print("Opción no válida. Intente nuevamente.")  # Manejo de entrada no válida
+            match opcion:
+
+                case "1" | "2" | "3" | "4":  # Opciones de operaciones
+                    self.realizar_operacion(opcion)
+                case "5":  # Ver historial
+                    self.ver_historial()
+                case "6":  # Salir
+                    print("Gracias por usar la calculadora. ¡Hasta luego!")
+                    break
+                case _:
+                    print("Opción no válida. Intente nuevamente.")  # Manejo de entrada no válida
 
     def realizar_operacion(self, opcion):
         # Opciones de los tipos de operación

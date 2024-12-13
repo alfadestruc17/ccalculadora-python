@@ -24,16 +24,20 @@ class Operacion:
 
     @staticmethod
     def realizar_operacion(numero1, numero2, tipo_operacion):
-        if tipo_operacion == "suma":
-            return Operacion.suma(numero1, numero2)
-        elif tipo_operacion == "resta":
-            return Operacion.resta(numero1, numero2)
-        elif tipo_operacion == "multiplicacion":
-            return Operacion.multiplicacion(numero1, numero2)
-        elif tipo_operacion == "division":
-            return Operacion.division(numero1, numero2)
-        else:
-            raise ValueError("\033[31mOperación no válida.\033[0m")  # Tipo de operación no reconocido
+
+        match tipo_operacion:
+            case "suma":
+                return numero1 + numero2
+            case "resta":
+                return numero1 - numero2
+            case "multiplicacion":
+                return numero1 * numero2
+            case "division":
+                if numero2 == 0:
+                    raise ZeroDivisionError("El divisor no puede ser cero.")
+                return numero1 / numero2
+            case _:
+                raise ValueError("Operación no válida.")  # Tipo de operación no reconocido
 
     @staticmethod
     def guardar_historial(tipo_operacion, numero1, numero2, resultado):
