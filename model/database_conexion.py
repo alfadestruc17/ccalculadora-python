@@ -42,10 +42,11 @@ class DatabaseConnection:
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS historial (
                 id INT AUTO_INCREMENT PRIMARY KEY,  # Identificador único para cada registro
-                operacion VARCHAR(45) NOT NULL,     # Tipo de operación (ej: suma, resta)
+                id_operacion INT NOT NULL,     # Tipo de operación (ej: suma, resta)
                 numero1 FLOAT NOT NULL,    # Primer número
                 numero2 FLOAT NOT NULL,    # Segundo número
-                resultado FLOAT NOT NULL   # Resultado de la operación
+                resultado FLOAT NOT NULL,   # Resultado de la operación
+                FOREIGN KEY (id_operacion) REFERENCES operaciones(id)
             );
         """)
 

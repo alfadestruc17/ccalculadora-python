@@ -21,15 +21,18 @@ class Controlador:
                     numero1, numero2 = self.vista.solicitar_numeros()
                     resultado = Operacion.suma(numero1, numero2)
                     self.vista.mostrar_resultado(resultado)
+                    Operacion.guardar_historial(1, numero1, numero2, resultado)
                 case "2":
                     numero1, numero2 = self.vista.solicitar_numeros()
                     resultado = Operacion.resta(numero1, numero2)
                     self.vista.mostrar_resultado(resultado)
+                    Operacion.guardar_historial(2, numero1, numero2, resultado)
 
                 case "3":
                     numero1, numero2 = self.vista.solicitar_numeros()
                     resultado = Operacion.multiplicacion(numero1, numero2)
                     self.vista.mostrar_resultado(resultado)
+                    Operacion.guardar_historial(3, numero1, numero2, resultado)
 
                 case "4": 
                     numero1, numero2 = self.vista.solicitar_numeros()
@@ -38,6 +41,7 @@ class Controlador:
                         self.vista.mostrar_error("No se puede dividor por 0")
                     else:    
                         self.vista.mostrar_resultado(resultado)
+                        Operacion.guardar_historial(4, numero1, numero2, resultado)
 
                 case "5":  # Ver historial
                     self.ver_historial()

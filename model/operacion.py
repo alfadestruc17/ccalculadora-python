@@ -32,7 +32,7 @@ class Operacion:
 
             # Consulta SQL para insertar datos en la tabla 'historial'
             consulta = """
-                INSERT INTO historial (operacion, numero1, numero2, resultado)
+                INSERT INTO historial (id_operacion, numero1, numero2, resultado)
                 VALUES (%s, %s, %s, %s)
             """
             valores = (tipo_operacion, numero1, numero2, resultado)  # Valores a insertar
@@ -53,7 +53,7 @@ class Operacion:
             cursor = db.conn.cursor()
 
             # Consulta SQL para obtener los datos de la tabla 'historial'
-            consulta = "SELECT * FROM historial"
+            consulta = "SELECT h.numero1, o.operacion, h.numero2, h.resultado FROM historial h INNER JOIN operaciones o ON o.id = h.id_operacion"
             cursor.execute(consulta)  # Ejecuta la consulta
             historial = cursor.fetchall()  # Recupera todos los registros
             return historial  # Retorna el historial como una lista de tuplas
