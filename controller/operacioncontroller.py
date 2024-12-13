@@ -17,8 +17,28 @@ class Controlador:
             # Manejo de opciones del menú
             match opcion:
 
-                case "1" | "2" | "3" | "4":  # Opciones de operaciones
-                    self.realizar_operacion(opcion)
+                case "1":  # Opciones de operaciones
+                    numero1, numero2 = self.vista.solicitar_numeros()
+                    resultado = Operacion.suma(numero1, numero2)
+                    self.vista.mostrar_resultado(resultado)
+                case "2":
+                    numero1, numero2 = self.vista.solicitar_numeros()
+                    resultado = Operacion.resta(numero1, numero2)
+                    self.vista.mostrar_resultado(resultado)
+
+                case "3":
+                    numero1, numero2 = self.vista.solicitar_numeros()
+                    resultado = Operacion.multiplicacion(numero1, numero2)
+                    self.vista.mostrar_resultado(resultado)
+
+                case "4": 
+                    numero1, numero2 = self.vista.solicitar_numeros()
+                    resultado = Operacion.division(numero1, numero2)
+                    if resultado == False:
+                        self.vista.mostrar_error("No se puede dividor por 0")
+                    else:    
+                        self.vista.mostrar_resultado(resultado)
+
                 case "5":  # Ver historial
                     self.ver_historial()
                 case "6":  # Salir
@@ -26,35 +46,6 @@ class Controlador:
                     break
                 case _:
                     print("Opción no válida. Intente nuevamente.")  # Manejo de entrada no válida
-
-    def realizar_operacion(self, opcion):
-        # Opciones de los tipos de operación
-        operaciones = {
-            "1": "suma",
-            "2": "resta",
-            "3": "multiplicacion",
-            "4": "division"
-        }
-        tipo_operacion = operaciones[opcion]  # Determina el tipo de operación
-
-        # Solicita al usuario los números para realizar la operación
-        numero1, numero2 = self.vista.solicitar_numeros()
-        if numero1 is None or numero2 is None:  # Si hubo un error en la entrada, se detiene el flujo
-            return
-
-        try:
-            # Realiza la operación utilizando el modelo
-            resultado = Operacion.realizar_operacion(numero1, numero2, tipo_operacion)
-
-            # Muestra el resultado al usuario
-            self.vista.mostrar_resultado(resultado)
-
-            # Guarda la operación en el historial de la base de datos
-            Operacion.guardar_historial(tipo_operacion, numero1, numero2, resultado)
-
-        except (ValueError, ZeroDivisionError) as e:
-            # Captura y muestra errores como división por cero o valores no válidos
-            self.vista.mostrar_error(str(e))
 
     def ver_historial(self):
         # Obtiene el historial desde el modelo
