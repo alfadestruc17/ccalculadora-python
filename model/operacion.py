@@ -19,7 +19,7 @@ class Operacion:
     @staticmethod
     def division(numero1, numero2):
         if numero2 == 0:
-            raise ZeroDivisionError("\033[31mEl divisor no puede ser cero.\033[0m")
+            return False
         return numero1 / numero2
 
     @staticmethod

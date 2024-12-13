@@ -34,7 +34,10 @@ class Controlador:
                 case "4": 
                     numero1, numero2 = self.vista.solicitar_numeros()
                     resultado = Operacion.division(numero1, numero2)
-                    self.vista.mostrar_resultado(resultado)
+                    if resultado == False:
+                        self.vista.mostrar_error("No se puede dividor por 0")
+                    else:    
+                        self.vista.mostrar_resultado(resultado)
 
                 case "5":  # Ver historial
                     self.ver_historial()
