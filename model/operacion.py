@@ -23,23 +23,6 @@ class Operacion:
         return numero1 / numero2
 
     @staticmethod
-    def realizar_operacion(numero1, numero2, tipo_operacion):
-
-        match tipo_operacion:
-            case "suma":
-                return numero1 + numero2
-            case "resta":
-                return numero1 - numero2
-            case "multiplicacion":
-                return numero1 * numero2
-            case "division":
-                if numero2 == 0:
-                    raise ZeroDivisionError("El divisor no puede ser cero.")
-                return numero1 / numero2
-            case _:
-                raise ValueError("Operación no válida.")  # Tipo de operación no reconocido
-
-    @staticmethod
     def guardar_historial(tipo_operacion, numero1, numero2, resultado):
         
         db = DatabaseConnection()  # Crea una conexión a la base de datos
